@@ -15,8 +15,7 @@ ${
   (data.license ? `1. [License](#license)\n` : "") +
   (data.contributing ? `1. [Contributing](#contributing)\n` : "") +
   (data.tests ? `1. [Tests](#tests)\n` : "") +
-  (data.gitHub ? `1. [GitHub](#gitHub)\n` : "") +
-  (data.email ? `1. [Email](#email)\n` : "") +
+  (data.gitHub || data.email ? `1. [Questions](#questions)\n` : "") +
   (data.preview ? `1. [Preview](#preview)\n` : "")
 }
 
@@ -51,18 +50,17 @@ ${
     : ""
 }
 ${
-  data.gitHub
-    ? `## **GitHub**
->${data.gitHub}`
-    : ""
+  //Question Header
+  data.gitHub || data.email ? `## **Questions**` : ""
 }
 ${
-  data.email
-    ? `## **Email**
->${data.email}`
-    : ""
+  //Contact info - GitHub
+  data.gitHub ? `Find me on GitHub at https://github.com/${data.gitHub}.` : ""
 }
-${//Questions section and how to reach me github and email}
+${
+  //Contact info - Email
+  data.email ? `Contact me via email at ${data.email}.` : ""
+}
 ${
   data.preview
     ? `## **Preview**
