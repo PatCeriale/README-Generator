@@ -1,20 +1,15 @@
 // npm init
-// install dependencies -iquirer
-// TODO: ignore package lock?
-// TODO: require all dependecies I'll need - inquirer, fs
-// TODO: create array of questions
-// TODO: *Write a README in markdown file to use as template*
-// TODO: function that will generate my readme template
-// TODO: Use inquirer to prompt users with questions
-// TODO: use answers that come back from inquirer - pass those to generate README function
-// TODO: write file using template generated from README function
+// install dependencies -inquirer
+
+// TODO: require all dependencies (inquirer, fs)
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./generateMarkdown");
 
-// array of questions for user
+// Use inquirer to prompt users with questions
 inquirer
   .prompt([
+    // array of questions for user
     {
       type: "input",
       message: "Enter your project name:",
@@ -25,23 +20,6 @@ inquirer
       message: "What is the description for this project?",
       name: "description",
     },
-    // {
-    //   type: "checkbox",
-    //   message:
-    //     "Please select the sections you want to include in your table of contents?",
-    //   name: "tableOfContents",
-    //   choices: [
-    //     "title",
-    //     "description",
-    //     "installation",
-    //     "usage",
-    //     "license",
-    //     "contributing",
-    //     "tests",
-    //     "questions",
-    //     "preview",
-    //   ],
-    // },
     {
       type: "input",
       message:
@@ -55,7 +33,7 @@ inquirer
     },
     {
       type: "list",
-      choices: ["MIT", "GPLv3", "Apache", "The Unlicense"],
+      choices: ["MIT", "GPLv3", "Apache", "Unlicense", "ISC"],
       message: "Please list any licenses associated with this application:",
       name: "license",
     },
@@ -85,33 +63,18 @@ inquirer
       name: "preview",
     },
   ])
+  // Use answers that come back from inquirer - pass those to generate README function
   .then(function (response) {
     const mdString = generateMarkdown(response);
     console.log(response);
     console.log(mdString);
+    // Write file using template generated from README function
     fs.writeFileSync("README.md", mdString, "utf8");
   });
 
-const questions = [];
+// const questions = [];
+// // function to initialize program
+// function init() {}
 
-// function to write README file
-// function writeReadme(response){
-//    return "README.md",
-//
-//     function (err) {
-//       if (err) {
-//         console.log(err);
-//       } else {
-//         console.log(
-//           "README complete! Check the folder containing this file to view your new creation."
-//         );
-//       }
-//     }
-//   );
-// }
-
-// function to initialize program
-function init() {}
-
-// function call to initialize program
-init();
+// // function call to initialize program
+// init();
