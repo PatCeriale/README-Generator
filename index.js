@@ -33,13 +33,13 @@ inquirer
     },
     {
       type: "list",
-      choices: ["MIT", "GPLv3", "Apache", "Unlicense", "ISC"],
+      choices: ["MIT", "GPLv3", "Apache", "Unlicense", "ISC", "None"],
       message: "Please list any licenses associated with this application:",
       name: "license",
     },
     {
       type: "input",
-      message: "Please list any collaborators who took part in this project:",
+      message: "Describe how you would like to deal with contributions:",
       name: "contributing",
     },
     {
@@ -59,7 +59,7 @@ inquirer
     },
     {
       type: "input",
-      message: "Please attach the link to your preview picture",
+      message: "Please attach a preview of this project",
       name: "preview",
     },
   ])
